@@ -9,7 +9,8 @@
         android:src="@drawable/placeholder"
         android:layout_marginStart="56dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -18,7 +19,8 @@
         android:src="@drawable/placeholder"
         android:layout_marginEnd="52dp"
         android:layout_alignTop="@+id/iv_cat1"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -27,7 +29,8 @@
         android:layout_marginTop="36dp"
         android:src="@drawable/instagram"
         android:layout_below="@+id/iv_cat1"
-        android:layout_alignStart="@+id/iv_cat1" />
+        android:layout_alignStart="@+id/iv_cat1"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -35,7 +38,8 @@
         android:id="@+id/iv_cat4"
         android:src="@drawable/instagram"
         android:layout_alignTop="@+id/iv_cat3"
-        android:layout_alignStart="@+id/iv_cat2" />
+        android:layout_alignStart="@+id/iv_cat2"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -44,7 +48,8 @@
         android:src="@drawable/placeholder"
         android:layout_marginTop="32dp"
         android:layout_below="@+id/iv_cat3"
-        android:layout_alignStart="@+id/iv_cat3" />
+        android:layout_alignStart="@+id/iv_cat3"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -52,7 +57,8 @@
         android:id="@+id/iv_cat6"
         android:src="@drawable/placeholder"
         android:layout_alignTop="@+id/iv_cat5"
-        android:layout_alignStart="@+id/iv_cat4" />
+        android:layout_alignStart="@+id/iv_cat4"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -61,13 +67,15 @@
         android:layout_marginTop="34dp"
         android:src="@drawable/instagram"
         android:layout_below="@+id/iv_cat5"
-        android:layout_alignStart="@+id/iv_cat5" />
+        android:layout_alignStart="@+id/iv_cat5"
+        android:onClick="catOnClick"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="90dp"
-        android:id="@+id/imageView"
+        android:id="@+id/iv_cat8"
         android:src="@drawable/instagram"
         android:layout_alignBottom="@+id/iv_cat7"
-        android:layout_alignEnd="@+id/iv_cat6" />
+        android:layout_alignEnd="@+id/iv_cat6"
+        android:onClick="catOnClick"/>
 </RelativeLayout>
