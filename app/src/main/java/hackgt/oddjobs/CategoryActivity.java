@@ -10,10 +10,14 @@ import android.widget.ImageView;
 
 public class CategoryActivity extends Activity {
 
+    String path;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+
+        path = getIntent().getStringExtra("path");
     }
 
     public void catOnClick(View view)
