@@ -24,6 +24,10 @@
             android:name=".FormFillActivity"
             android:label="@string/title_activity_form_fill" >
         </activity>
+        <activity
+            android:name=".ListingsActivity"
+            android:label="@string/title_activity_listings" >
+        </activity>
     </application>
 
 </manifest>
