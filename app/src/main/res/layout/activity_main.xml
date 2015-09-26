@@ -7,10 +7,54 @@
 
     <TextView android:text="OddJobs" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tvTitle"
+        android:textSize="50dp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/leoface"
+        android:maxWidth="50dp"
+        android:minHeight="50dp"
+        android:maxHeight="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="196dp"
-        android:id="@+id/tvTitle"
-        android:textSize="50dp" />
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request"
+        android:id="@+id/btnRequest"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/tvTitle"
+        android:layout_toStartOf="@+id/imageView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respond"
+        android:id="@+id/btnRespond"
+        android:layout_alignTop="@+id/btnRequest"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/ibtnReqMail"
+        android:layout_marginBottom="32dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentBottom="true" />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/ibtnResMail"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignTop="@+id/ibtnReqMail"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
