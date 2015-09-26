@@ -31,11 +31,19 @@
         <activity
             android:name=".ChoiceActivity"
             android:label="@string/title_activity_choice"
-            android:parentActivityName=".ListingsActivity">
+            android:parentActivityName=".ListingsActivity" >
         </activity>
         <activity
             android:name=".ConfirmationActivity"
             android:label="@string/title_activity_confirmation" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register" >
         </activity>
     </application>
 
