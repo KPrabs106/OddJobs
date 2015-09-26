@@ -1,9 +1,12 @@
 package hackgt.oddjobs;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
@@ -11,6 +14,29 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btnRequest = (Button) findViewById(R.id.btnRequest);
+        btnRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveOnClick(v,"request");
+            }
+        });
+
+        Button btnRespond = (Button) findViewById(R.id.btnRespond);
+        btnRespond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveOnClick(v,"respond");
+            }
+        });
+
+    }
+
+    public void moveOnClick(View view, String p) {
+        Intent i = new Intent(view.getContext(), CategoryActivity.class);
+        i.putExtra("path", p);
+        startActivity(i);
     }
 
     @Override
