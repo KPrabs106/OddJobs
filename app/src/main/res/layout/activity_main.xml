@@ -10,13 +10,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvTitle"
         android:textSize="50dp"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/imgLogo"
         android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:id="@+id/imageView"
+        android:id="@+id/imgLogo"
         android:src="@mipmap/leoface"
         android:maxWidth="50dp"
         android:minHeight="50dp"
@@ -32,7 +32,7 @@
         android:id="@+id/btnRequest"
         android:layout_marginTop="52dp"
         android:layout_below="@+id/tvTitle"
-        android:layout_toStartOf="@+id/imageView" />
+        android:layout_toStartOf="@+id/imgLogo" />
 
     <Button
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:text="Respond"
         android:id="@+id/btnRespond"
         android:layout_alignTop="@+id/btnRequest"
-        android:layout_toEndOf="@+id/imageView" />
+        android:layout_toEndOf="@+id/imgLogo" />
 
     <ImageButton
         android:layout_width="30dp"
