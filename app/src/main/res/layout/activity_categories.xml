@@ -1,19 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="101dp"
-        android:id="@+id/imageView"
-        android:src="@mipmap/placeholder" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/iv_cat1"
+        android:src="@mipmap/placeholder"
+        android:layout_marginStart="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="101dp"
-        android:id="@+id/imageView2"
-        android:src="@mipmap/placeholder" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/iv_cat2"
+        android:src="@mipmap/placeholder"
+        android:layout_marginEnd="52dp"
+        android:layout_alignTop="@+id/iv_cat1"
+        android:layout_alignParentEnd="true" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:id="@+id/iv_cat3"
+        android:layout_marginTop="36dp"
+        android:src="@mipmap/instagram"
+        android:layout_below="@+id/iv_cat1"
+        android:layout_alignStart="@+id/iv_cat1" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:id="@+id/iv_cat4"
+        android:src="@mipmap/instagram"
+        android:layout_alignTop="@+id/iv_cat3"
+        android:layout_alignStart="@+id/iv_cat2" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/iv_cat5"
+        android:src="@mipmap/placeholder"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/iv_cat3"
+        android:layout_alignStart="@+id/iv_cat3" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/iv_cat6"
+        android:src="@mipmap/placeholder"
+        android:layout_alignTop="@+id/iv_cat5"
+        android:layout_alignStart="@+id/iv_cat4" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:id="@+id/iv_cat7"
+        android:layout_marginTop="34dp"
+        android:src="@mipmap/instagram"
+        android:layout_below="@+id/iv_cat5"
+        android:layout_alignStart="@+id/iv_cat5" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:id="@+id/iv_cat8"
+        android:src="@mipmap/instagram"
+        android:layout_alignBottom="@+id/iv_cat7"
+        android:layout_alignEnd="@+id/iv_cat6" />
+</RelativeLayout>
