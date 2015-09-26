@@ -20,6 +20,10 @@
             android:name=".CategoryActivity"
             android:label="@string/title_activity_category" >
         </activity>
+        <activity
+            android:name=".FormFillActivity"
+            android:label="@string/title_activity_form_fill" >
+        </activity>
     </application>
 
 </manifest>
