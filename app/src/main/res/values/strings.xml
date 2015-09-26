@@ -4,4 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_category">CategoryActivity</string>
+    <string name="title_activity_listings">ListingsActivity</string>
+    <string name="title_activity_form_fill">FormFillActivity</string>
+    <string name="title_activity_listings">ListingsActivity</string>
+    <string name="title_activity_choice">ChoiceActivity</string>
+    <string name="title_activity_confirmation">ConfirmationActivity</string>
 </resources>
