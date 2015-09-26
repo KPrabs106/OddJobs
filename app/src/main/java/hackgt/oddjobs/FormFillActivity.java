@@ -2,6 +2,7 @@ package hackgt.oddjobs;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.method.DateTimeKeyListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,11 +14,18 @@ import android.widget.TimePicker;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
+
+import java.util.Calendar;
 
 import cz.msebera.android.httpclient.Header;
 
 public class FormFillActivity extends Activity {
 
+    EditText tbDate;
+    EditText tbTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,18 +34,54 @@ public class FormFillActivity extends Activity {
         Button submit = (Button) findViewById(R.id.btnSubmit);
         final EditText tbRequest = (EditText) findViewById(R.id.tbRequestTitle);
         final EditText tbAddress = (EditText) findViewById(R.id.tbAddress);
-        final DatePicker dpDate = (DatePicker) findViewById(R.id.dpDate);
-        final TimePicker tpTime = (TimePicker) findViewById(R.id.tpTime);
+        tbDate = (EditText) findViewById(R.id.tbDate);
+        tbDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePickerDialog datePickerDialog, int year, int monthOfYear, int dayOfMonth) {
+                                String date = dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+                                tbDate.setText(date);
+                            }
+                        },
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "Pick a Date");
+            }
+        });
+        tbTime = (EditText) findViewById(R.id.tbTime);
+        tbTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                TimePickerDialog tpd = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
+                        String time = hourOfDay+":"+minute;
+                        tbTime.setText(time);
+                    }
+                },
+                        now.get(Calendar.HOUR_OF_DAY),
+                        now.get(Calendar.MINUTE),
+                        false
+                );
+                tpd.show(getFragmentManager(), "Pick a Time");
+            }
+        });
         final EditText tbCost = (EditText) findViewById(R.id.tbCost);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String request = String.valueOf(tbRequest.getText());
                 String address = String.valueOf(tbAddress.getText());
-                String dateTime = dpDate.getYear() + "-" + dpDate.getMonth() + "-" + dpDate.getDayOfMonth()
-                        + " " + tpTime.getHour() + ":" + tpTime.getMinute() + ":" + "00";
+                String dateTime = String.valueOf(tbDate.getText()) + String.valueOf(tbTime.getText());
                 String cost = String.valueOf(tbCost.getText());
-                //Log.e("Date time", dateTime);
+                Log.e("Date time", dateTime);
                 RequestParams requestParams = new RequestParams();
                 requestParams.put("request", request);
                 requestParams.put("address", address);
@@ -47,12 +91,12 @@ public class FormFillActivity extends Activity {
                 ClientInterface.post("post_job.php", requestParams, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        Log.e(String.valueOf(statusCode),"");
+                        Log.e(String.valueOf(statusCode), "");
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Log.e(String.valueOf(statusCode),"");
+                        Log.e(String.valueOf(statusCode), "");
                     }
                 });
             }
