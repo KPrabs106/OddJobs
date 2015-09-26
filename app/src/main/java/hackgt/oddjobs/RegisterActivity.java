@@ -1,41 +1,22 @@
 package hackgt.oddjobs;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 
-public class CategoryActivity extends Activity {
-
-    String path;
+public class RegisterActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categories);
-
-        path = getIntent().getStringExtra("path");
-    }
-
-    public void catOnClick(View view)
-    {
-        Intent i;
-        if (path.equals("request")) {
-            i = new Intent(view.getContext(), FormFillActivity.class);
-        } else {
-            i = new Intent(view.getContext(), ListingsActivity.class);
-        }
-        i.putExtra("category", view.getId());
-        i.putExtra("path",path);
+        setContentView(R.layout.activity_register);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_category, menu);
+        getMenuInflater().inflate(R.menu.menu_register, menu);
         return true;
     }
 

@@ -1,48 +1,31 @@
 package hackgt.oddjobs;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
-public class MainActivity extends Activity {
+public class LoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        Button btnRequest = (Button) findViewById(R.id.btnRequest);
-        btnRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveOnClick(v,"request");
-            }
-        });
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        EditText tbEmail = (EditText) findViewById(R.id.tbEmail);
+        EditText tbPass = (EditText) findViewById(R.id.tbPass);
 
-        Button btnRespond = (Button) findViewById(R.id.btnRespond);
-        btnRespond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moveOnClick(v,"respond");
-            }
-        });
-
-    }
-
-    public void moveOnClick(View view, String p) {
-        Intent i = new Intent(view.getContext(), CategoryActivity.class);
-        i.putExtra("path", p);
-        startActivity(i);
+        //send client data later
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
     }
 
