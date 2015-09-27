@@ -82,6 +82,7 @@ public class FormFillActivity extends Activity {
                 String dateTime = String.valueOf(tbDate.getText()) + String.valueOf(tbTime.getText());
                 String cost = String.valueOf(tbCost.getText());
                 Log.e("Date time", dateTime);
+
                 RequestParams requestParams = new RequestParams();
                 requestParams.put("request", request);
                 requestParams.put("address", address);
