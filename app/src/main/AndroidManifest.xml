@@ -17,25 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CategoryActivity"
-            android:label="@string/title_activity_category" >
-        </activity>
-        <activity
             android:name=".ListingsActivity"
             android:label="@string/title_activity_listings" >
         </activity>
         <activity
             android:name=".FormFillActivity"
             android:label="@string/title_activity_form_fill" >
-        </activity>
-        <activity
-            android:name=".ChoiceActivity"
-            android:label="@string/title_activity_choice"
-            android:parentActivityName=".ListingsActivity" >
-        </activity>
-        <activity
-            android:name=".ConfirmationActivity"
-            android:label="@string/title_activity_confirmation" >
         </activity>
         <activity
             android:name=".LoginActivity"

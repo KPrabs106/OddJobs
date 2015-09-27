@@ -34,9 +34,9 @@ public class MainActivity extends Activity {
     }
 
     public void moveOnClick(View view, String p) {
-        Intent i = new Intent(view.getContext(), CategoryActivity.class);
-        i.putExtra("path", p);
-        startActivity(i);
+       // Intent i = new Intent(view.getContext(), CategoryActivity.class);
+       // i.putExtra("path", p);
+       // startActivity(i);
     }
 
     @Override
