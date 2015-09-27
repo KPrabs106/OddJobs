@@ -1,11 +1,13 @@
 package hackgt.oddjobs;
 
+import android.util.Log;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class ClientInterface {
-    private static final String baseURL = "54.174.103.9";
+    private static final String baseURL = "http://54.174.103.9/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -18,6 +20,8 @@ public class ClientInterface {
     }
 
     private static String getAbsoluteURL(String relativeURL){
+        Log.e("url", baseURL + relativeURL);
         return baseURL + relativeURL;
+
     }
 }

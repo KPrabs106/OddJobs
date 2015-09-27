@@ -2,6 +2,7 @@ package hackgt.oddjobs;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -30,9 +31,10 @@ public class ListingsActivity extends Activity {
     }
 
     private void getJobListings() {
-        ClientInterface.post("get_all_jobs.php", null, new JsonHttpResponseHandler() {
+        ClientInterface.get("get_all_jobs.php", null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                Log.e("JOSN", response.toString());
                 jobIds = new int[response.length()];
                 jobTitles = new String[response.length()];
                 costs = new double[response.length()];
@@ -50,6 +52,7 @@ public class ListingsActivity extends Activity {
                         e.printStackTrace();
                     }
                 }
+                Log.e("jobs", jobTitles[0]);
                 initJobListings();
             }
         });
