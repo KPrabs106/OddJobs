@@ -129,43 +129,27 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Location"
         android:id="@+id/tv_location"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/tv_cost"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:layout_above="@+id/tf_location"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/tf_location"
-        android:layout_below="@+id/tv_location"
+        android:text="Enter Location"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="Enter Location" />
-
-    <SeekBar
-        android:layout_width="300dp"
-        android:layout_height="25dp"
-        android:id="@+id/sb_cost"
-        android:layout_below="@+id/tv_cost"
-        android:layout_alignParentStart="true"
-        android:max="500"
-        android:progress="100"
-        android:indeterminate="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="$$$"
-        android:id="@+id/tv_sbcost"
-        android:layout_alignTop="@+id/sb_cost"
-        android:layout_toEndOf="@+id/sb_cost" />
+        android:layout_marginBottom="26dp" />
 
     <org.florescu.android.rangeseekbar.RangeSeekBar
-        android:id="@+id/seekbar_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         rsb:absoluteMaxValue="300"
-        rsb:absoluteMinValue="0"/>
+        rsb:absoluteMinValue="0"
+        rsb:valuesAboveThumbs="true"
+        rsb:textAboveThumbsColor="@android:color/holo_purple"
+        android:layout_below="@+id/tv_cost"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
