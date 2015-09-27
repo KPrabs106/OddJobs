@@ -1,16 +1,65 @@
 package hackgt.oddjobs;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import cz.msebera.android.httpclient.Header;
 
 public class RegisterActivity extends Activity {
 
+    boolean isRegistered;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        TelephonyManager tMgr = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+        final String phoneNumber = tMgr.getLine1Number();
+
+        if (isRegistered(phoneNumber))
+            startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
+
+        final TextView tvError = (TextView) findViewById(R.id.tvError);
+        final EditText usernameField = (EditText) findViewById(R.id.tbUsername);
+
+        Button submitButton = (Button) findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestParams requestParams = new RequestParams();
+                requestParams.put("phoneNumber", phoneNumber);
+                requestParams.put("username", String.valueOf(usernameField.getText()));
+                ClientInterface.post("add_user.php", requestParams, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                        try {
+                            if (response.getJSONObject(0).getBoolean("valid"))
+                                startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
+                            else {
+                                tvError.setVisibility(View.VISIBLE);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -33,5 +82,21 @@ public class RegisterActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean isRegistered(String phoneNumber) {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("phone_number", phoneNumber);
+        ClientInterface.post("is_user", requestParams, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                try {
+                    isRegistered = response.getJSONObject(0).getBoolean("isRegistered");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        return isRegistered;
     }
 }
