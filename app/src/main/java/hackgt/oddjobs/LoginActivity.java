@@ -2,13 +2,17 @@ package hackgt.oddjobs;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends Activity {
 
@@ -33,7 +37,17 @@ public class LoginActivity extends Activity {
                 requestParams.put("email", tbEmail);
                 requestParams.put("password", tbPass);
 
+                ClientInterface.post("verify_user.php", requestParams, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        Log.e(String.valueOf(statusCode), "");
+                    }
 
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Log.e(String.valueOf(statusCode), "");
+                    }
+                });
 
             }
         });
