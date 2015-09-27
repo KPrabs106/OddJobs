@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="hackgt.oddjobs.ListingsActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="37dp"
+        android:layout_centerHorizontal="true"
         android:backgroundTintMode="src_in">
 
         <TextView
+            android:id="@+id/tvTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Task"
-            android:id="@+id/tvTasksmall"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="14dp" />
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="14dp"
+            android:text="Task"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
+            android:id="@+id/tvCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cost"
-            android:id="@+id/tvCostsmall"
-            android:layout_alignTop="@+id/tvTasksmall"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="17dp" />
+            android:layout_alignTop="@+id/tvTask"
+            android:layout_marginEnd="17dp"
+            android:text="Cost"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
+            android:id="@+id/tvLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
-            android:id="@+id/tvLocationsmall"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:text="Location" />
 
         <TextView
+            android:id="@+id/tvCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvTask"
             android:text="Category"
-            android:id="@+id/tvCategorysmall"
-            android:layout_below="@+id/tvTasksmall"
-            android:layout_alignParentStart="true" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>
 </RelativeLayout>
