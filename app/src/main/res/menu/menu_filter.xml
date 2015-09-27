@@ -6,5 +6,6 @@
         android:id="@+id/action_send"
         android:icon="@drawable/ic_done"
         android:title="Done"
-        app:showAsAction="withText" />
+        android:orderInCategory="100"
+        app:showAsAction="always" />
 </menu>

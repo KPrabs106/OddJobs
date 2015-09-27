@@ -10,9 +10,6 @@
     android:id="@+id/relLayout"
     android:background="#fafffd"
     android:contextClickable="true">
-    <activity android:theme="@style/Theme.AppCompat.Light"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -149,6 +146,7 @@
         android:layout_height="wrap_content"
         rsb:absoluteMaxValue="300"
         rsb:absoluteMinValue="0"
+        rsb:textAboveThumbsColor="@android:color/holo_purple"
         android:layout_above="@+id/tv_location"
         android:layout_alignParentStart="true" />
 

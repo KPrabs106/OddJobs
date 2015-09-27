@@ -2,6 +2,7 @@ package hackgt.oddjobs;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -10,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import org.florescu.android.rangeseekbar.RangeSeekBar;
-public class FilterActivity extends ActionBarActivity {
+public class FilterActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +47,12 @@ public class FilterActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_send) {
+            Intent i = new Intent(getApplicationContext(), ListingsActivity.class);
+            //TODO send back with filter info
+            startActivity(i);
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }

@@ -1,6 +1,7 @@
 package hackgt.oddjobs;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,6 +12,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import java.util.logging.Filter;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -90,6 +93,12 @@ public class ListingsActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == R.id.action_filter) {
+            Intent i = new Intent(this.getApplicationContext(), FilterActivity.class);
+            startActivity(i);
             return true;
         }
 

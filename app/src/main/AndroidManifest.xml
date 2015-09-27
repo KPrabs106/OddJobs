@@ -15,16 +15,12 @@
         <activity
             android:name=".ListingsActivity"
             android:label="@string/title_activity_listings" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
             android:name=".DetailedListingActivity"
-            android:label="@string/title_activity_detailed_listing" >
+            android:label="@string/title_activity_detailed_listing"
+            android:parentActivityName=".ListingsActivity">
 
         </activity>
         <activity
@@ -38,6 +34,11 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".FilterActivity"
