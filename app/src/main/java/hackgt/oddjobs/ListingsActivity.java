@@ -44,6 +44,7 @@ public class ListingsActivity extends Activity {
                 String category;
                 String location;
                 String dateTime;
+                String details;
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
@@ -53,8 +54,9 @@ public class ListingsActivity extends Activity {
                         category = response.getJSONObject(i).getString("category");
                         location = response.getJSONObject(i).getString("location");
                         dateTime = response.getJSONObject(i).getString("time");
+                        details = response.getJSONObject(i).getString("details");
 
-                        jobListings[i] = new JobListing(jobId, jobTitle, cost, category, location, dateTime);
+                        jobListings[i] = new JobListing(jobId, jobTitle, cost, category, location, dateTime, details);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -65,7 +67,7 @@ public class ListingsActivity extends Activity {
     }
 
     private void initJobListings() {
-        Log.e("Job Listing",jobListings[0].toString());
+        Log.e("Job Listing",jobListings[0].getDetails());
         ListingsAdapter listingsAdapter = new ListingsAdapter(this, jobListings);
         ListView jobListView = (ListView) findViewById(R.id.jobListView);
         jobListView.setAdapter(listingsAdapter);
