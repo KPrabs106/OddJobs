@@ -2,7 +2,6 @@ package hackgt.oddjobs;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -22,6 +21,8 @@ public class ListingsActivity extends Activity {
     String[] categories;
     String[] locations;
 
+    JobListing[] jobListings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,32 +35,34 @@ public class ListingsActivity extends Activity {
         ClientInterface.get("get_all_jobs.php", null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                Log.e("JOSN", response.toString());
-                jobIds = new int[response.length()];
-                jobTitles = new String[response.length()];
-                costs = new double[response.length()];
-                categories = new String[response.length()];
-                locations = new String[response.length()];
+
+                jobListings = new JobListing[response.length()];
+                int jobId;
+                String jobTitle;
+                double cost;
+                String category;
+                String location;
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
-                        jobIds[i] = response.getJSONObject(i).getInt("id");
-                        jobTitles[i] = response.getJSONObject(i).getString("title");
-                        costs[i] = response.getJSONObject(i).getDouble("cost");
-                        categories[i] = response.getJSONObject(i).getString("category");
-                        locations[i] = response.getJSONObject(i).getString("location");
+                        jobId = response.getJSONObject(i).getInt("id");
+                        jobTitle = response.getJSONObject(i).getString("title");
+                        cost = response.getJSONObject(i).getDouble("cost");
+                        category = response.getJSONObject(i).getString("category");
+                        location = response.getJSONObject(i).getString("location");
+
+                        jobListings[i] = new JobListing(jobId, jobTitle, cost, category, location);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                Log.e("jobs", jobTitles[0]);
                 initJobListings();
             }
         });
     }
 
     private void initJobListings() {
-        ListingsAdapter listingsAdapter = new ListingsAdapter(this, jobIds, jobTitles, costs, categories, locations);
+        ListingsAdapter listingsAdapter = new ListingsAdapter(this, jobListings);
         ListView jobListView = (ListView) findViewById(R.id.jobListView);
         jobListView.setAdapter(listingsAdapter);
 

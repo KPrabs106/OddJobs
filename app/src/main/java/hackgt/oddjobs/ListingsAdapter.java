@@ -12,23 +12,15 @@ import java.text.NumberFormat;
 /**
  * Created by prabh on 9/26/2015.
  */
-public class ListingsAdapter extends ArrayAdapter<String> {
+public class ListingsAdapter extends ArrayAdapter<JobListing> {
 
     private final Activity activity;
-    private final int[] jobIds;
-    private final String[] jobTitles;
-    private final double[] costs;
-    private final String[] categories;
-    private final String[] locations;
+    private final JobListing[] jobListings;
 
-    public ListingsAdapter(Activity activity, int[] jobIds, String[] jobTitles, double[] costs, String[] categories, String[] locations) {
-        super(activity, R.layout.individual_listings_layout);
+    public ListingsAdapter(Activity activity, JobListing[] jobListings) {
+        super(activity, R.layout.individual_listings_layout, jobListings);
         this.activity = activity;
-        this.jobIds = jobIds;
-        this.jobTitles = jobTitles;
-        this.costs = costs;
-        this.categories = categories;
-        this.locations = locations;
+        this.jobListings = jobListings;
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
@@ -36,17 +28,17 @@ public class ListingsAdapter extends ArrayAdapter<String> {
         View rowView = inflater.inflate(R.layout.individual_listings_layout, null, true);
 
         TextView tvTask = (TextView) view.findViewById(R.id.tvTask);
-        tvTask.setText(jobTitles[position]);
+        tvTask.setText(jobListings[position].getJobTitle());
 
         TextView tvCost = (TextView) view.findViewById(R.id.tvCost);
-        tvCost.setText(formatMoney(costs[position]));
+        tvCost.setText(formatMoney(jobListings[position].getCost()));
 
         TextView tvCategory = (TextView) view.findViewById(R.id.tvCategory);
-        tvCategory.setText(categories[position]);
+        tvCategory.setText(jobListings[position].getCategory());
 
         TextView tvLocation = (TextView) view.findViewById(R.id.tvLocation);
         //TODO format location to only show zipcode
-        tvLocation.setText(locations[position]);
+        tvLocation.setText(jobListings[position].getLocation());
 
         return rowView;
     }
@@ -55,5 +47,6 @@ public class ListingsAdapter extends ArrayAdapter<String> {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(cost);
     }
+
 
 }
