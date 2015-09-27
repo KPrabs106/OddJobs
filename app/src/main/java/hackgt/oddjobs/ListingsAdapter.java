@@ -27,16 +27,16 @@ public class ListingsAdapter extends ArrayAdapter<JobListing> {
         LayoutInflater inflater = activity.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.individual_listings_layout, null, true);
 
-        TextView tvTask = (TextView) view.findViewById(R.id.tvTask);
+        TextView tvTask = (TextView) rowView.findViewById(R.id.tvTask);
         tvTask.setText(jobListings[position].getJobTitle());
 
-        TextView tvCost = (TextView) view.findViewById(R.id.tvCost);
+        TextView tvCost = (TextView) rowView.findViewById(R.id.tvCost);
         tvCost.setText(formatMoney(jobListings[position].getCost()));
 
-        TextView tvCategory = (TextView) view.findViewById(R.id.tvCategory);
+        TextView tvCategory = (TextView) rowView.findViewById(R.id.tvCategory);
         tvCategory.setText(jobListings[position].getCategory());
 
-        TextView tvLocation = (TextView) view.findViewById(R.id.tvLocation);
+        TextView tvLocation = (TextView) rowView.findViewById(R.id.tvLocation);
         //TODO format location to only show zipcode
         tvLocation.setText(jobListings[position].getLocation());
 
