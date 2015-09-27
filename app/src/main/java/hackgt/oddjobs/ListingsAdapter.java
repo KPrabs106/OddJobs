@@ -49,7 +49,7 @@ public class ListingsAdapter extends ArrayAdapter<JobListing> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(),DetailedListingActivity.class);
-                i.putExtra("jobId", jobListings[position].getJobId());
+                i.putExtra("jobList", jobListings[position]);
                 v.getContext().startActivity(i);
             }
         });

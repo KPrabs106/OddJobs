@@ -11,6 +11,8 @@ public class DetailedListingActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_listing);
+        JobListing job = getIntent().getParcelableExtra("jobList");
+
     }
 
     @Override
