@@ -16,7 +16,7 @@ public class ClientInterface {
     }
 
     public static void post(String URL, RequestParams requestParams, AsyncHttpResponseHandler responseHandler){
-        client.post(URL, requestParams, responseHandler);
+        client.post(getAbsoluteURL(URL), requestParams, responseHandler);
     }
 
     private static String getAbsoluteURL(String relativeURL){

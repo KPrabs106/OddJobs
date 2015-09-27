@@ -24,8 +24,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class FormFillActivity extends Activity {
 
+    //TODO add category and additional details
+
     EditText tbDate;
     EditText tbTime;
+    String frdate;
+    String frtime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,7 @@ public class FormFillActivity extends Activity {
                             @Override
                             public void onDateSet(DatePickerDialog datePickerDialog, int year, int monthOfYear, int dayOfMonth) {
                                 String date = dayOfMonth+"/"+(monthOfYear+1)+"/"+year;
+                                frdate = year+"-"+ (monthOfYear+1) +"-" +dayOfMonth;
                                 tbDate.setText(date);
                             }
                         },
@@ -63,6 +68,7 @@ public class FormFillActivity extends Activity {
                     @Override
                     public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
                         String time = hourOfDay+":"+minute;
+                        frtime = hourOfDay + ":" + minute + ":00";
                         tbTime.setText(time);
                     }
                 },
@@ -79,15 +85,17 @@ public class FormFillActivity extends Activity {
             public void onClick(View v) {
                 String request = String.valueOf(tbRequest.getText());
                 String address = String.valueOf(tbAddress.getText());
-                String dateTime = String.valueOf(tbDate.getText()) + String.valueOf(tbTime.getText());
+                //TODO Change datetime format
+                String dateTime = frdate + " " + frtime;
                 String cost = String.valueOf(tbCost.getText());
                 Log.e("Date time", dateTime);
 
                 RequestParams requestParams = new RequestParams();
-                requestParams.put("request", request);
-                requestParams.put("address", address);
+                requestParams.put("title", request);
+                requestParams.put("location", address);
                 requestParams.put("dateTime", dateTime);
                 requestParams.put("cost", cost);
+                requestParams.put("category","Placeholding");
 
                 ClientInterface.post("post_job.php", requestParams, new AsyncHttpResponseHandler() {
                     @Override
