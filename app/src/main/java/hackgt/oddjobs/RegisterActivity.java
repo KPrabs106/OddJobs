@@ -17,12 +17,12 @@ import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
 public class RegisterActivity extends Activity {
 
-    boolean isRegistered;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +31,7 @@ public class RegisterActivity extends Activity {
         TelephonyManager tMgr = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
         final String phoneNumber = tMgr.getLine1Number();
 
-        if (isRegistered(phoneNumber))
-            startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
+        isRegistered(phoneNumber);
 
         final TextView tvError = (TextView) findViewById(R.id.tvError);
         final EditText usernameField = (EditText) findViewById(R.id.tbUsername);
@@ -49,6 +48,19 @@ public class RegisterActivity extends Activity {
                     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                         try {
                             if (response.getJSONObject(0).getBoolean("valid"))
+                                startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
+                            else {
+                                tvError.setVisibility(View.VISIBLE);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        try {
+                            if (response.getBoolean("valid"))
                                 startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
                             else {
                                 tvError.setVisibility(View.VISIBLE);
@@ -84,19 +96,31 @@ public class RegisterActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean isRegistered(String phoneNumber) {
+    private void isRegistered(String phoneNumber) {
         RequestParams requestParams = new RequestParams();
         requestParams.put("phone_number", phoneNumber);
-        ClientInterface.post("is_user", requestParams, new JsonHttpResponseHandler() {
+        ClientInterface.post("is_registered.php", requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
-                    isRegistered = response.getJSONObject(0).getBoolean("isRegistered");
+                    if (response.getJSONObject(0).getBoolean("isRegistered"))
+                        startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if (response.getBoolean("isRegistered"))
+                        startActivity(new Intent(getApplicationContext(), ListingsActivity.class));
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
-        return isRegistered;
     }
 }
