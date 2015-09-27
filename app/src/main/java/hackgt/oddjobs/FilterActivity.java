@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
+import org.florescu.android.rangeseekbar.RangeSeekBar;
 public class FilterActivity extends Activity {
     private TextView PRICEtextProgress;
     @Override
@@ -31,6 +32,19 @@ public class FilterActivity extends Activity {
 
             }
         });
+        RangeSeekBar<Integer> rangeSeekBar = new RangeSeekBar<Integer>(this);
+        // Set the range
+        rangeSeekBar.setRangeValues(0, 300);
+        rangeSeekBar.setSelectedMinValue(0);
+        rangeSeekBar.setSelectedMaxValue(300);
+
+        // Add to layout
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.seekbar_placeholder);
+        layout.addView(rangeSeekBar);
+
+        // Seek bar for which we will set text color in code
+        //RangeSeekBar rangeSeekBarTextColorWithCode = (RangeSeekBar) findViewById(R.id.rangeSeekBarTextColorWithCode);
+        //rangeSeekBarTextColorWithCode.setTextAboveThumbsColorResource(android.R.color.holo_blue_bright);
     }
 
     @Override
