@@ -10,6 +10,9 @@
     android:id="@+id/relLayout"
     android:background="#fafffd"
     android:contextClickable="true">
+    <activity android:theme="@style/Theme.AppCompat.Light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -108,9 +111,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Categories"
         android:id="@+id/tv_categories"
+        android:textSize="25dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textSize="25dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -118,10 +121,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Cost"
         android:id="@+id/tv_cost"
-        android:layout_below="@+id/cb7"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:layout_above="@+id/seekbar_placeholder"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -139,17 +141,15 @@
         android:id="@+id/tf_location"
         android:text="Enter Location"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="26dp" />
+        android:layout_alignParentStart="true" />
 
     <org.florescu.android.rangeseekbar.RangeSeekBar
+        android:id="@+id/seekbar_placeholder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         rsb:absoluteMaxValue="300"
         rsb:absoluteMinValue="0"
-        rsb:valuesAboveThumbs="true"
-        rsb:textAboveThumbsColor="@android:color/holo_purple"
-        android:layout_below="@+id/tv_cost"
+        android:layout_above="@+id/tv_location"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>
