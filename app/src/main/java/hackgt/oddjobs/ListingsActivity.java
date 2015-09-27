@@ -2,6 +2,7 @@ package hackgt.oddjobs;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -42,6 +43,7 @@ public class ListingsActivity extends Activity {
                 double cost;
                 String category;
                 String location;
+                String dateTime;
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
@@ -50,8 +52,9 @@ public class ListingsActivity extends Activity {
                         cost = response.getJSONObject(i).getDouble("cost");
                         category = response.getJSONObject(i).getString("category");
                         location = response.getJSONObject(i).getString("location");
+                        dateTime = response.getJSONObject(i).getString("time");
 
-                        jobListings[i] = new JobListing(jobId, jobTitle, cost, category, location);
+                        jobListings[i] = new JobListing(jobId, jobTitle, cost, category, location, dateTime);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -62,6 +65,7 @@ public class ListingsActivity extends Activity {
     }
 
     private void initJobListings() {
+        Log.e("Job Listing",jobListings[0].toString());
         ListingsAdapter listingsAdapter = new ListingsAdapter(this, jobListings);
         ListView jobListView = (ListView) findViewById(R.id.jobListView);
         jobListView.setAdapter(listingsAdapter);

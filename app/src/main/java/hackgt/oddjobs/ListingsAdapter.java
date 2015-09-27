@@ -37,6 +37,9 @@ public class ListingsAdapter extends ArrayAdapter<JobListing> {
         TextView tvCategory = (TextView) rowView.findViewById(R.id.tvCategory);
         tvCategory.setText(jobListings[position].getCategory());
 
+        TextView tvDate = (TextView) rowView.findViewById(R.id.tvDate);
+        tvDate.setText(jobListings[position].getDate());
+
         TextView tvLocation = (TextView) rowView.findViewById(R.id.tvLocation);
         //TODO format location to only show zipcode
         tvLocation.setText(jobListings[position].getLocation());
@@ -47,7 +50,7 @@ public class ListingsAdapter extends ArrayAdapter<JobListing> {
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(),DetailedListingActivity.class);
                 i.putExtra("jobId", jobListings[position].getJobId());
-                activity.startActivity(i);
+                v.getContext().startActivity(i);
             }
         });
 
