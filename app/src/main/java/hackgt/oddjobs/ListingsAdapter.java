@@ -1,6 +1,7 @@
 package hackgt.oddjobs;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,16 @@ public class ListingsAdapter extends ArrayAdapter<JobListing> {
         TextView tvLocation = (TextView) rowView.findViewById(R.id.tvLocation);
         //TODO format location to only show zipcode
         tvLocation.setText(jobListings[position].getLocation());
+
+        //TODO create on click listener and pass job id
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(),DetailedListingActivity.class);
+                i.putExtra("jobId", jobListings[position].getJobId());
+                activity.startActivity(i);
+            }
+        });
 
         return rowView;
     }
