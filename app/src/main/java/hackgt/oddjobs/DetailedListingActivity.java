@@ -2,8 +2,12 @@ package hackgt.oddjobs;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.text.NumberFormat;
 
 public class DetailedListingActivity extends Activity {
 
@@ -12,6 +16,25 @@ public class DetailedListingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_listing);
         JobListing job = getIntent().getParcelableExtra("jobList");
+
+        TextView tvTask = (TextView) findViewById(R.id.tvTask);
+        tvTask.setText(job.getJobTitle());
+
+        TextView tvCategory = (TextView) findViewById(R.id.tvCategory);
+        tvCategory.setText(job.getCategory());
+
+        TextView tvCost = (TextView) findViewById(R.id.tvCost);
+        tvCost.setText(formatMoney(job.getCost()));
+
+        TextView tvDate = (TextView) findViewById(R.id.tvDate);
+        tvDate.setText(job.getDateTime());
+
+        TextView tvLocation = (TextView) findViewById(R.id.tvLocation);
+        tvLocation.setText(job.getLocation());
+
+        TextView tvAddComments = (TextView) findViewById(R.id.tvAddCommentField);
+        tvAddComments.setText(job.getDetails());
+        Log.e("add comment", job.getDetails());
 
     }
 
@@ -35,5 +58,10 @@ public class DetailedListingActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String formatMoney(double cost) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        return formatter.format(cost);
     }
 }

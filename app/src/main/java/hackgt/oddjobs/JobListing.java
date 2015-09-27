@@ -16,8 +16,9 @@ public class JobListing implements Parcelable{
     private String location;
     private String date;
     private String time;
+    private String details;
 
-    public JobListing(int id, String jobTitle, double cost, String category, String location, String dateTime) {
+    public JobListing(int id, String jobTitle, double cost, String category, String location, String dateTime, String details) {
         this.jobId = id;
         this.jobTitle = jobTitle;
         this.cost = cost;
@@ -25,6 +26,7 @@ public class JobListing implements Parcelable{
         this.location = location;
         this.date = dateTime.substring(0,dateTime.indexOf(" "));
         this.time = dateTime.substring(dateTime.indexOf(" "));
+        this.details = details;
     }
 
     public int getJobId() {
@@ -51,6 +53,8 @@ public class JobListing implements Parcelable{
 
     public String getTime() { return time; }
 
+    public String getDetails() { return details; }
+
     public int describeContents() {
         return 0;
     }
@@ -63,6 +67,7 @@ public class JobListing implements Parcelable{
         out.writeString(location);
         out.writeString(date);
         out.writeString(time);
+        out.writeString(details);
     }
 
     public static final Parcelable.Creator<JobListing> CREATOR = new Parcelable.Creator<JobListing>() {
@@ -83,6 +88,11 @@ public class JobListing implements Parcelable{
         this.location = in.readString();
         this.date = in.readString();
         this.time = in.readString();
+        this.details = in.readString();
+    }
+
+    public String getDateTime() {
+        return date + " " + time;
     }
 
 }
