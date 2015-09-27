@@ -10,6 +10,4 @@
     <string name="title_activity_confirmation">ConfirmationActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_filter">FilterActivity</string>
-    <string name="title_activity_detailed_listing">DetailedListingActivity</string>
 </resources>
