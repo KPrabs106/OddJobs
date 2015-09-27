@@ -11,28 +11,23 @@ if (!empty($_POST)){
 
     }
 
-
-
     $user_name = $_POST['name'];
-    $name = "SELECT name FROM Users
-    WHERE name =  '$user_name'";
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $user_password = "SELECT password FROM Users
-    WHERE name = '$user_name'";
-    $password_correct = password_verify($_POST['password'], $user_password);
+    checklogin = mysqli_query($link, "SELECT * FROM Users
+    WHERE name = '" . $user_name . "' AND password ='" . $password ."'"));
 
-    if(!$password_correct){
-        $response['success']=0;
-        $message['message']="Password is incorrect";
-        die(json_encode($response));
+    if(mysqli_num_rows ==1 ){
+        $row = mysqli_fetch_array(checklogin);
+        $user_name =$row['name'];
+        $email = $row['email'];
+
+        $_SESSION['Username'] = $user_name;
+        $_SESSION['Email'] = $email;
+        $_SESSION['LoggedIn'] =1 ;
     }
-    else{
-        $response['success']=1;
-        $message['message']="You have been successfully logged in.";
-        die(json_encode($response));
-    }
-
 }
+
 
 
 
