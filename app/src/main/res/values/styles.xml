@@ -3,6 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:actionOverflowMenuStyle">@style/OptionMenu</item>
+    </style>
+
+    <style name="OptionMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">#5c96ff</item>
     </style>
 
 </resources>

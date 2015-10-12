@@ -8,4 +8,5 @@
     <string name="title_activity_register">Login</string>
     <string name="title_activity_filter">Pick Filter</string>
     <string name="title_activity_detailed_listing">Details</string>
+    <string name="title_activity_detailed_maps">Map</string>
 </resources>

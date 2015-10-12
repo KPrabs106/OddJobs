@@ -28,10 +28,12 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        TelephonyManager tMgr = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-        final String phoneNumber = tMgr.getLine1Number();
-
-        isRegistered(phoneNumber);
+//        TelephonyManager tMgr = (TelephonyManager) getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+//        final String phoneNumber = tMgr.getLine1Number();
+//
+//        isRegistered(phoneNumber);
+        Intent i = new Intent(getApplicationContext(), ListingsActivity.class);
+        startActivity(i);
 
         final TextView tvError = (TextView) findViewById(R.id.tvError);
         final EditText usernameField = (EditText) findViewById(R.id.tbUsername);
@@ -41,7 +43,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void onClick(View v) {
                 RequestParams requestParams = new RequestParams();
-                requestParams.put("phoneNumber", phoneNumber);
+                //requestParams.put("phoneNumber", phoneNumber);
                 requestParams.put("username", String.valueOf(usernameField.getText()));
                 ClientInterface.post("add_user.php", requestParams, new JsonHttpResponseHandler() {
                     @Override

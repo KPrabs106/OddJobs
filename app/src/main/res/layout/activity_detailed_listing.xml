@@ -13,9 +13,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Task"
         android:id="@+id/tvTask"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/tvComments"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp" />
+        android:layout_marginBottom="68dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,9 +23,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Cost"
         android:id="@+id/tvCost"
-        android:layout_alignTop="@+id/tvCategory"
+        android:layout_alignTop="@+id/tvTask"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="18dp" />
+        android:layout_marginEnd="13dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,10 +33,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Category"
         android:id="@+id/tvCategory"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="43dp"
-        android:layout_below="@+id/tvTask"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/tvCost" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,9 +41,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Location"
         android:id="@+id/tvLocation"
-        android:layout_above="@+id/tvComments"
-        android:layout_alignStart="@+id/tvCategory"
-        android:layout_marginBottom="22dp" />
+        android:layout_below="@+id/tvCategory"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,13 +55,14 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:id="@+id/tvAddCommentField"
-        android:layout_below="@+id/tvComments"
-        android:layout_alignParentStart="true"
         android:maxLines="4"
-        android:layout_alignEnd="@+id/tvCost"
-        android:minLines="1" />
+        android:minLines="1"
+        android:layout_above="@+id/btnAccept"
+        android:layout_alignEnd="@+id/tvDate"
+        android:layout_marginBottom="18dp"
+        android:layout_toEndOf="@+id/tvTask" />
 
     <Button
         android:layout_width="wrap_content"
@@ -73,8 +70,7 @@
         android:text="ACCEPT"
         android:id="@+id/btnAccept"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,7 +78,18 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="DateTime"
         android:id="@+id/tvDate"
-        android:layout_below="@+id/tvCost"
-        android:layout_alignStart="@+id/tvLocation"
-        android:layout_marginTop="26dp" />
+        android:layout_alignTop="@+id/tvCategory"
+        android:layout_alignEnd="@+id/tvCost" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true">
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/map"
+            tools:context="hackgt.oddjobs.DetailedMapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+    </RelativeLayout>
 </RelativeLayout>
